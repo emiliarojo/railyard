@@ -1,2 +1,17 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome";
+
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+
+// Partial Pages
+@import "pages/home";
+
+// Components
+@import "components/buttons";
+@import "components/navbars";
+
+body {
+  background-color: $soft-white;
+}
