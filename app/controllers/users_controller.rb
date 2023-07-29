@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @projects = @user.projects.order(created_at: :desc)
-    @skills = @user.skills
+    @user_skills = @user.skills
   end
 
   def edit
