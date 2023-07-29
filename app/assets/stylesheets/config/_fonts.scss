@@ -5,22 +5,23 @@
 $railyard-font: 'Bebas Neue', sans-serif;
 $body-font: 'Encode Sans', sans-serif;
 
-.title-landing-page {
-  font-family: $railyard-font;
+.red-header {
+  font-family: $body-font;
   color: #D20102;
-  font-size: 160pt;
+  font-size: 36pt;
+  font-weight: 400;
 }
 
-.subtitle-landing-page {
+.black-subheader {
   font-family: $body-font;
   color: $black;
-  font-size: 24pt;
-  margin-top: -40px;
+  font-size: 16pt;
+  font-weight: 300;
 }
 
-.title-home-page {
-  font-family: $railyard-font;
+.black-subheader-bold {
+  font-family: $body-font;
   color: $black;
-  font-size: 80pt;
-  line-height: 1;
+  font-size: 16pt;
+  font-weight: 500;
 }

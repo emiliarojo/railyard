@@ -1,0 +1,37 @@
+<nav class="navbar-user-profile">
+  <div class="navbar-container-left">
+    <h1 class= "navbar-title">
+      Railyard
+    </h1>
+    <div class="search-bar">
+      <form class="d-flex" action="" method="get">
+        <input class="form-control" type="search" name="q" placeholder=" Search for Rails Projects" aria-label="Search">
+        <%# <button class="btn btn-outline-success" type="submit">Search</button> %>
+      </form>
+    </div>
+  </div>
+  <div class="navbar-container-right">
+    <div class="new-project-icon">
+      <i class="fa-solid fa-plus"></i>
+    </div>
+    <div class="message-notifications-icon">
+      <i class="fa-solid fa-comments"></i>
+    </div>
+  </div>
+</nav>
+
+<div class="container-user-basic-info">
+  <h1 class="red-header">
+    <%= @user.first_name %> <%= @user.last_name %>
+  </h1>
+  <h5 class="black-subheader-bold">
+      <%= @user.job_description %>
+  </h5>
+</div>
+<div class="container-user-about">
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ipsum
+    molestiae magnam officiis cum aut accusantium qui odit eos quos beatae
+    recusandae, explicabo minus laboriosam, quo pariatur illo laudantium neque.
+  </p>
+</div>

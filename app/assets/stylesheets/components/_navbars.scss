@@ -6,3 +6,40 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.navbar-title {
+  font-family: $railyard-font;
+  color: $red;
+  font-size: 40pt;
+  margin: 10px 20px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.navbar-user-profile {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  input {
+    width: 300px;
+    border-radius: 25px;
+    margin-left: 10px;
+  }
+}
+
+.navbar-container-left {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navbar-container-right {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
