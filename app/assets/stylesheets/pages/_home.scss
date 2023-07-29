@@ -1,3 +1,23 @@
+.title-landing-page {
+  font-family: $railyard-font;
+  color: #D20102;
+  font-size: 160pt;
+}
+
+.subtitle-landing-page {
+  font-family: $body-font;
+  color: $black;
+  font-size: 24pt;
+  margin-top: -40px;
+}
+
+.title-home-page {
+  font-family: $railyard-font;
+  color: $black;
+  font-size: 80pt;
+  line-height: 1;
+}
+
 .container-landing-page {
   width: 100vw;
   height: 100vh;
