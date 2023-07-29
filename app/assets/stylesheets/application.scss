@@ -7,10 +7,13 @@
 
 // Partial Pages
 @import "pages/home";
+@import "pages/projects_index";
 
 // Components
 @import "components/buttons";
 @import "components/navbars";
+@import "components/cards";
+@import "components/avatars";
 
 body {
   background-color: $soft-white;

@@ -1,0 +1,22 @@
+.project-card {
+  background-color: $soft-white;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+
+  .card-user {
+    width: 10%;
+  }
+
+  h1 {
+    color: $red;
+  }
+
+  .skill {
+    background-color: $pale-red;
+    color: $red;
+    font-weight: 700;
+    width: 13%;
+    border-radius: 15px;
+  }
+}
