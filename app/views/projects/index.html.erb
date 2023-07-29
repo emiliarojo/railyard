@@ -1,0 +1,9 @@
+<h1>Hello</h1>
+<div>
+  <% @projects.each do |project| %>
+    <%= project.name %>
+    <%= project.description %>
+    <%= project.amount_of_people %>
+    <%= project.user.email %>
+  <% end %>
+</div>
