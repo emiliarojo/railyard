@@ -1,0 +1,41 @@
+.container-landing-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-header-landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container-home {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+#connect {
+  width: 70%;
+  text-align: left;
+  margin: 125px 25px;
+}
+
+#build {
+  align-self: flex-end;
+  width: 50%;
+  text-align: right;
+  margin: 125px 25px;
+}
+
+#showcase {
+  width: 50%;
+  text-align: left;
+  margin: 125px 25px 0px 25px;
+}
