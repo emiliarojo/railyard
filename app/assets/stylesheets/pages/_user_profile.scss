@@ -1,13 +1,76 @@
 .container-user-basic-info {
   width: 50%;
   margin: 75px 20px 20px 75px;
-  padding: 50px 0px;
+  padding-bottom: 25px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .container-user-about {
   margin: 20px 75px;
-  margin-right: 10%;
-  padding: 50px 0px;
+  padding-bottom: 25px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.user-profile-github {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: $black;
+    font-size: 24pt;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    margin-top: 5px;
+    &:hover {
+      color: $red;
+    }
+  }
+}
+
+.user-profile-image {
+  height: 250px;
+  width: 250px;
+  position: absolute;
+  top: 125px;
+  right: 175px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.container-user-profile-skills {
+  display: block;
+  margin: 20px 75px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 25px;
+}
+
+.container-user-skills {
+  padding: 25px 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.container-skill {
+  background-color: $pale-red;
+  color: $red;
+  font-family: $body-font;
+  font-size: 12pt;
+  font-weight: 500;
+  border-radius: 25px;
+  padding: 15px 25px;
+  margin: 10px 5px;
+}
+
+.container-user-profile-projects {
+  margin: 20px 75px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 25px;
 }
