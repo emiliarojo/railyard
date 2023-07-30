@@ -16,10 +16,5 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     })
-  ],
-  resolve: {
-    alias: {
-      stimulus: 'stimulus/controllers',
-    },
-  },
+  ]
 }
