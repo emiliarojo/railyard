@@ -1,0 +1,9 @@
+form {
+  input[type="checkbox"] {
+    display: none;
+  }
+
+  .skill-container:hover, .selected-skill:hover {
+    cursor: pointer;
+  }
+}

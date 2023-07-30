@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
@@ -13,5 +16,5 @@ application.register("in-place-edit", InPlaceEditController)
 import ScrollRevealController from "./scroll_reveal_controller"
 application.register("scroll-reveal", ScrollRevealController)
 
-import SkillsSelectionController from "./skills_selection_controller"
-application.register("skills-selection", SkillsSelectionController)
+import SkillsController from "./skills_controller"
+application.register("skills", SkillsController)
