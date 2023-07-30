@@ -13,18 +13,20 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
-      user = User.create(
-        provider: auth.provider,
-        uid: auth.uid,
-        email: auth.info.email,
-        password: Devise.friendly_token[0, 20],
-        first_name: auth.info.first_name,
-        last_name: auth.info.last_name,
-        about_me: auth.info.description
-      )
-      # If you are using confirmable and the provider(s) you use validate emails,
-      # uncomment the line below to skip the confirmation emails.
-      # user.skip_confirmation!
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.first_name = auth.info.name.split.first
+      user.last_name = auth.info.name.split[1..-1].join(" ")
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.github_data"] && session["devise.github_data"]["info"]
+        user.email = data["email"] if user.email.blank?
+        user.first_name = data["name"].split.first if user.first_name.blank?
+        user.last_name = data["name"].split[1..-1].join(" ") if user.last_name.blank?
+      end
     end
   end
 end
