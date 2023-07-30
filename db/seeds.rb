@@ -138,5 +138,12 @@ projects_list.each do |project_info|
 end
 
 # You can create requests, chatrooms, and messages here as needed.
+10.times do
+  Chatroom.create(project: Project.all.sample)
+end
+
+50.times do
+  Message.create(chatroom: Chatroom.all.sample, user: User.all.sample, content: Faker::Lorem.paragraph)
+end
 
 puts "Seeds data has been created."

@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="mb-5">Chatrooms</h1>
+
+  <% @chatrooms.each do |chatroom| %>
+    <%= link_to chatroom_path(chatroom) do %>
+      <div class="chatroom">
+        <h2><%= chatroom.project.name %></h2>
+        <h5>Description: <%= chatroom.project.description %></h5>
+
+        <% if chatroom.messages[-3] %>
+        <p><em><%= chatroom.messages[-3].user.first_name %>:</em> <%= chatroom.messages[-3].content %></p>
+        <% end %>
+
+        <% if chatroom.messages[-2] %>
+        <p><em><%= chatroom.messages[-2].user.first_name %>:</em> <%= chatroom.messages[-2].content %></p>
+        <% end %>
+
+        <% if chatroom.messages.last %>
+        <p><strong><em><%= chatroom.messages.last.user.first_name %>:</em> <%= chatroom.messages.last.content %></strong></p>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

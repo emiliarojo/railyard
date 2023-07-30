@@ -1,0 +1,20 @@
+.chatroom {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: $pale-red;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chatroom h2 {
+  margin-bottom: 5px;
+}
+
+.chatroom p {
+  margin-bottom: 0;
+}
+
+h5 {
+  color: $red;
+}
