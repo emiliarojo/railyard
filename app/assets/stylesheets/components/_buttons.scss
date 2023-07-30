@@ -64,7 +64,7 @@
   font-weight: 500;
   padding: 10px 75px;
   margin: 16px;
-  border-radius: 8px;
+  border-radius: 30px;
   text-align: center;
   text-decoration: none;
   transition: 0.3s ease-in-out;
@@ -121,7 +121,25 @@
   }
 }
 
-.primary-button-medium {
+.primary-pill-button-large {
+  background-color: $red;
+  color: white;
+  font-family: $body-font;
+  font-size: 12pt;
+  font-weight: 500;
+  padding: 1em 5em;
+  margin: 16px;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    background-color: $red-hover;
+    color: white;
+  }
+}
+
+.primary-pill-button-medium {
   background-color: $red;
   color: $soft-white;
   font-family: $body-font;
