@@ -2,13 +2,13 @@ require 'date'
 
 class ProjectsController < ApplicationController
   def index
-    if params[:q].present?
-      @projects = Project.where("title LIKE :query OR description LIKE :query", query: "%#{params[:q]}%")
+    authorize Project
+    @projects = policy_scope(Project)
+    if params[:query].present?
+      @projects = Project.search_by_name_and_description(params[:query])
     else
       @projects = Project.all
     end
-    authorize Project
-    @projects = policy_scope(Project)
   end
 
   def show

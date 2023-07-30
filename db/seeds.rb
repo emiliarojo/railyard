@@ -10,14 +10,14 @@
 
 require 'faker'
 
-Chatroom.delete_all
-Message.delete_all
 ProjectSkill.delete_all
 Request.delete_all
 UserSkill.delete_all
 Skill.delete_all
 Project.delete_all
 User.delete_all
+Chatroom.delete_all
+Message.delete_all
 
 # Helper method to create skills
 def create_skill(technology, level)
