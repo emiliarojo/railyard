@@ -1,4 +1,4 @@
-# class RequestsController < ApplicationController
+class RequestsController < ApplicationController
 #   before_action :set_project, only: [:create]
 #   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -46,4 +46,4 @@
 #     # Handle the error, such as redirecting to an error page or displaying a message
 #     redirect_to root_path, alert: "Project not found."
 #   end
-# end
+end
