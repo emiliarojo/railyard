@@ -1,6 +1,6 @@
-# class RequestPolicy < ApplicationPolicy
+class RequestPolicy < ApplicationPolicy
 
 #   def create?
 #     true
 #   end
-# end
+end
