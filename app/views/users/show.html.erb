@@ -44,13 +44,7 @@
   </h5>
   <br>
   <p>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum ipsum
-    molestiae magnam officiis cum aut accusantium qui odit eos quos beatae
-    recusandae, explicabo minus laboriosam, quo pariatur illo laudantium neque.
-    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam nisi quis
-    distinctio. Voluptatibus, facere. Deserunt fugiat culpa, soluta enim
-    doloremque voluptate odit voluptas in suscipit aspernatur magni eum ea cum!
-    500 character max
+    <%= @user.about_me %>
   </p>
 </div>
 
@@ -72,10 +66,15 @@
       Projects
   </h5>
   <div class="container-user-projects">
-    <%# @user_projects.each do |project| %>
+    <% @user_projects.each do |project| %>
       <div class="card-project">
-        <%#= project.name %>
+        <h4><%= project.name %></h3>
+        <ul>
+          <% project.skills.each do |skill| %>
+            <li><%= skill.technology %></li>
+          <% end %>
+        </ul>
       </div>
-    <%# end %>
+    <% end %>
   </div>
 </div>
