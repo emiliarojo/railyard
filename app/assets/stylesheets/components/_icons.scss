@@ -1,0 +1,18 @@
+.new-project-icon {
+  font-size: 20pt;
+  color: $red;
+  &:hover {
+    cursor: pointer;
+    color: $red-hover;
+  }
+}
+
+.message-notifications-icon {
+  font-size: 20pt;
+  margin: 0px 25px;
+  color: $black;
+  &:hover {
+    cursor: pointer;
+    color: $red-hover;
+  }
+}

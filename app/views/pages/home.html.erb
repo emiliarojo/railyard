@@ -1,7 +1,5 @@
 <nav class="navbar-landing-page">
-  <a href="" class="button-login">
-    Login
-  </a>
+  <%= button_to "Login", user_github_omniauth_authorize_path, data: { turbo: false }, class: "button-login" %>
   <a href="" class="button-signup">
     Sign up
   </a>
