@@ -1,3 +1,5 @@
+<!-- app/views/users/show.html.erb -->
+
 <div class="container-user-basic-info">
   <h1 class="red-header">
     <%= @user.first_name %>
@@ -28,13 +30,30 @@
   <h5 class="black-subheader-bold">
     Skills
   </h5>
-  <div class="container-user-skills">
-    <% @user_skills.each do |skill| %>
-      <div class="container-skill">
-        <%= skill.technology %>
+  <% if @user.user_skills.nil? %>
+    <%= simple_form_for @user do |f| %>
+      <div class="d-flex flex-wrap" data-controller="skills">
+        <%= f.collection_check_boxes :skill_ids, @skills, :id, :technology do |b| %>
+          <span class="ms-5 me-5 mt-3 mb-3 d-flex justify-content-center align-items-center container-skill <%= "selected-skill" if @user.skill_ids.include?(b.value) %>"
+            data-target="skillName" data-action="click->skills#toggleHighlight">
+            <%= b.check_box + b.text %>
+          </span>
+        <% end %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: "primary-button-medium" %>
       </div>
     <% end %>
-  </div>
+
+  <% else %>
+    <div class="container-user-skills">
+      <% @user.skills.each do |skill| %>
+        <div class="container-skill">
+          <%= skill.technology %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <div class="container-user-profile-projects">
@@ -42,7 +61,7 @@
     Projects
   </h5>
   <div class="container-user-projects">
-    <% @user_projects.each do |project| %>
+    <% @user.projects.each do |project| %>
       <div class="card-user-project">
         <div class="card-user-project-title">
           <h4 class="red-subheader">

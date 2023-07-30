@@ -40,3 +40,14 @@
     height: 100%;
   }
 }
+
+.nav-user-profile {
+  margin-left: 10px;
+  a {
+    font-size: 28pt;
+    text-decoration: none;
+    &:hover {
+      color: $red;
+    }
+  }
+}

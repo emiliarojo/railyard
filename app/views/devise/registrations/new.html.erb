@@ -36,19 +36,6 @@
                     required: true,
                     input_html: { autocomplete: "url" },
                     value: @user.github_link if @user %>
-        <%= f.label :skills, "Skills (max 6)" %>
-        <br>
-      <div class="form-group">
-        <%= f.label :skills, "Select your skills (maximum of 6)" %>
-        <% Skill.all.each do |skill| %>
-          <label class="skill-button <%= 'selected' if resource.skills.include?(skill) %>">
-            <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
-            <%= skill.technology %>
-          </label><br>
-        <% end %>
-      </div>
-      </div>
-
       <div class="form-actions-signup">
         <%= f.button :submit, "Sign up", class: "button-red-flat" %>
     <% end %>
