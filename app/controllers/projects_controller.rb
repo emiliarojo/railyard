@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @hours = posted_hours_ago(@project.created_at)
+    @sent_request = current_user.requests.find_by(project_id: @project.id)
     authorize @project
   end
 

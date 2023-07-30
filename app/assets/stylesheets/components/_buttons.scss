@@ -28,6 +28,7 @@
   text-align: center;
   text-decoration: none;
   transition: 0.3s ease-in-out;
+
   &:hover {
     background-color: $red-hover;
   }
@@ -46,7 +47,54 @@
   text-align: center;
   text-decoration: none;
   transition: 0.3s ease;
+
   &:hover {
     color: $red-hover;
+  }
+}
+
+.primary-button-large {
+  background-color: $red;
+  color: white;
+  font-family: $body-font;
+  font-size: 12pt;
+  font-weight: 500;
+  padding: 1em 5em;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $red-hover;
+  }
+}
+
+.primary-button-medium {
+  background-color: $red;
+  color: $soft-white;
+  font-family: $body-font;
+  font-size: 12pt;
+  font-weight: 500;
+  padding: 1em 2em;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $red-hover;
+  }
+}
+
+.reverse-primary-button {
+  background-color: $soft-white;
+  color: $red;
+  border: 1px solid $red;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: $soft-white;
+    opacity: 0.7;
   }
 }

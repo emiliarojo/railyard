@@ -8,7 +8,19 @@
       </div>
     </div>
     <% if signed_in? %> <%# header-right-section %>
-      <div class="header-right-section border-bottom"></div>
+      <div class="header-right-section border-bottom d-flex justify-content-center align-items-center">
+        <% if @sent_request && @sent_request.status == "accepted"%>
+          <div class="d-flex justify-content-around align-items-center">
+            <span class="me-2"><%= link_to '<i class="fa-brands fa-github"></i>'.html_safe, "#" %></span>
+            <span><%= link_to "Chatroom", "#", class: "primary-button-medium" %></span>
+            <span class="ms-2"><%= link_to "Joined", "#", class: "primary-button-medium reverse-primary-button"%></span>
+          </div>
+        <% elsif @sent_request && @sent_request.status == "pending" %>
+          <div><span class="pending-status">Pending</span></div>
+        <% elsif @sent_request.nil? %>
+          <div><%= link_to "Join", "#", class: "primary-button-large"%></div>
+        <% end %>
+      </div>
     <% else %>
       <div class="header-right-section">
         <div class="sign-up text-center">

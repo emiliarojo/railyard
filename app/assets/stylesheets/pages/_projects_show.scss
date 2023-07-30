@@ -10,4 +10,26 @@
     padding: 12% 3%;
     border-radius: 15px;
   }
+
+  .fa-github {
+    font-size: 3em;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .pending-status {
+    background-color: $soft-white;
+    color: $red;
+    font-family: $body-font;
+    font-size: 12pt;
+    font-weight: 500;
+    padding: 1em 5em;
+    border-radius: 30px;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid $red;
+  }
 }
