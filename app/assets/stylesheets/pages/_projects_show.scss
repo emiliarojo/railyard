@@ -1,0 +1,13 @@
+.header-left-section {
+  width: 75%;
+}
+
+.header-right-section {
+  width: 25%;
+
+  .sign-up {
+    background-color: $pale-red;
+    padding: 12% 3%;
+    border-radius: 15px;
+  }
+}

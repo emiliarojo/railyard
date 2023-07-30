@@ -8,6 +8,7 @@
 // Partial Pages
 @import "pages/home";
 @import "pages/projects_index";
+@import "pages/projects_show";
 @import "pages/user_profile";
 
 // Components
@@ -19,4 +20,26 @@
 
 body {
   background-color: $soft-white;
+}
+
+a {
+  text-decoration: none;
+  color: $black;
+}
+
+h1 {
+  color: $red;
+}
+
+.skill {
+  background-color: $pale-red;
+  color: $red;
+  font-weight: 700;
+  width: 13%;
+  border-radius: 15px;
+}
+
+.underlined-bold-text {
+  text-decoration: underline;
+  font-weight: 600;
 }
