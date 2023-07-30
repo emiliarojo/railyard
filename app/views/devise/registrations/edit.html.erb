@@ -1,9 +1,15 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name, required: true %>
+    <%= f.input :last_name, required: true %>
+    <%= f.input :job_title %>
+    <%= f.input :about_me, as: :text %>
+    <%= f.input :github_link %>
+
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -21,6 +27,15 @@
                 hint: "we need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+
+    <%= f.input :photo, as: :file %>
+    <%= f.label :skills, "Select your skills (maximum of 6)" %>
+    <% Skill.all.each do |skill| %>
+      <label>
+        <%= check_box_tag "user[skill_ids][]", skill.id, current_user.skills.include?(skill) %>
+        <%= skill.technology %>
+      </label><br>
+    <% end %>
   </div>
 
   <div class="form-actions">
