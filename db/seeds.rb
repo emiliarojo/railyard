@@ -87,18 +87,21 @@ users_list = []
   }
 end
 
+Request.create(user_id: 1, project_id: 1, status: "pending")
+Request.create(user_id: 1, project_id: 2, status: "accepted")
+
 # for testing purpose
-users_list << {
-  email: "test@test.com",
-  password: "secret",
-  first_name: "Test name",
-  last_name: "Test last name",
-  job_description: "test",
-  about_me: "test",
-  provider: "github",
-  uid: Faker::Number.unique.number(digits: 6).to_s, # Using unique number to avoid conflicts
-  skills: Skill.all.sample(6) # Randomly assign 6 skills to the user
-}
+# users_list << {
+#   email: "test@test.com",
+#   password: "secret",
+#   first_name: "Test name",
+#   last_name: "Test last name",
+#   job_description: "test",
+#   about_me: "test",
+#   provider: "github",
+#   uid: Faker::Number.unique.number(digits: 6).to_s, # Using unique number to avoid conflicts
+#   skills: Skill.all.sample(6) # Randomly assign 6 skills to the user
+# }
 
 users_list.each do |user_info|
   create_user(user_info[:email], user_info[:password], user_info[:first_name], user_info[:last_name],
