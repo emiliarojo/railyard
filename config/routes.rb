@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
 
-  resources :projects
+  resources :projects do
+    resources :requests, only: [:new, :create]
+  end
   # get 'search', to: 'projects#index'
 
   resources :chatrooms, only: [:index, :show] do

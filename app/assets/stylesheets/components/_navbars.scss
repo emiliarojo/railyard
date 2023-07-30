@@ -38,6 +38,14 @@
   .navbar-container-right {
     width: 50%;
     height: 100%;
+
+    i {
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        color: $red;
+      }
+    }
   }
 }
 

@@ -1,7 +1,7 @@
 <div class="container p-5">
   <div class="d-flex"> <%# project-header %>
     <div class="header-left-section d-flex flex-column justify-content-around border-bottom"> <%# header-left-section %>
-      <p class="m-0 ps-5 pe-5 pb-4 pt-4"><%= link_to '<i class="fa-solid fa-arrow-left-long"></i>'.html_safe, projects_path, class: "me-3" %> <span>Projects</span> / <span , class= "fw-bold"><%= @project.name %></span></p>
+      <p class="m-0 ps-5 pe-5 pb-4 pt-4"><%= link_to '<i class="fa-solid fa-arrow-left-long"></i>'.html_safe, :back, class: "me-3" %> <span>Projects</span> / <span , class= "fw-bold"><%= @project.name %></span></p>
       <h1 class="ps-5 pe-5 m-0"><%= @project.name %></h1>
       <div class="ps-5 pe-5 pt-4 pb-4">
         <span class="me-3"><i class="fa-solid fa-user"></i> <%= @project.amount_of_people %></span>
@@ -32,7 +32,14 @@
         <% elsif @sent_request && @sent_request.status == "pending" %>
           <div><%= link_to "Pending", "#",class: "primary-pill-button-large reverse-primary-button"%></div>
         <% elsif @sent_request.nil? %>
-          <div><%= link_to "Join", "#", class: "primary-pill-button-large"%></div>
+          <%= link_to "Join", "#", class: "primary-pill-button-large"%>
+          <%# <div data-controller="requests" %>
+              <%# data-request-project-id="<%= @project.id"
+              <%# data-request-csrf-token="<%= form_authenticity_token "
+              <%# data-request-user-id="<%= current_user.id ">
+            <%= link_to "Join", new_project_request_path(@project), class: "primary-pill-button-large", data: { action: "click->requests#createRequest" }
+            <div data-target="response"></div>
+          </div> %>
         <% end %>
       </div>
     <% else %>
