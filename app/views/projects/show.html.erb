@@ -4,7 +4,21 @@
       <p class="m-0 ps-5 pe-5 pb-4 pt-4"><%= link_to '<i class="fa-solid fa-arrow-left-long"></i>'.html_safe, projects_path, class: "me-3" %> <span>Projects</span> / <span , class= "fw-bold"><%= @project.name %></span></p>
       <h1 class="ps-5 pe-5 m-0"><%= @project.name %></h1>
       <div class="ps-5 pe-5 pt-4 pb-4">
-        <span class="me-3"><i class="fa-solid fa-user"></i> <%= @project.amount_of_people %></span> <span>Posted by <span class="underlined-bold-text"><%= @project.user.first_name %> <%= @project.user.last_name %></span> <%= @hours %> <%= "hour".pluralize(@hours) %> ago</span>
+        <span class="me-3"><i class="fa-solid fa-user"></i> <%= @project.amount_of_people %></span>
+        <span class="me-3">Posted by
+          <% if (current_user && @project.user.first_name != current_user.first_name) || current_user.nil? %>
+            <span class="underlined-bold-text"><%= @project.user.first_name %> <%= @project.user.last_name %></span>
+          <% elsif current_user && @project.user.first_name == current_user.first_name %>
+            <span class="underlined-bold-text">You</span>
+          <% end %>
+          <%= @hours %> <%= "hour".pluralize(@hours) %> ago
+        </span>
+
+        <span>
+          <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_project_path(@project), class: "me-2" %>
+          <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, project_path(@project), data: { turbo_method: :delete } %>
+        </span>
+
       </div>
     </div>
     <% if signed_in? %> <%# header-right-section %>

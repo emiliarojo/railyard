@@ -1,0 +1,13 @@
+<%= simple_form_for @project do |f| %>
+  <%= f.input :name,
+              hint: "leave it blank if you don't want to change it" %>
+  <%= f.input :description,
+              hint: "leave it blank if you don't want to change it" %>
+  <%= f.input :amount_of_people,
+              hint: "leave it blank if you don't want to change it" %>
+  <%= f.input :repo_link,
+              hint: "leave it blank if you don't want to change it" %>
+  <div class="form-actions">
+    <%= f.button :submit, "Update", class: "primary-button-medium" %>
+  </div>
+<% end %>
