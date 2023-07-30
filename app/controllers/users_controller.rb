@@ -9,29 +9,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @skills = Skill.all
     authorize @user
   end
 
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: 'Profile was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  def update_skills
     @user = current_user
-    selected_skill_ids = params[:user][:skill_ids].reject(&:blank?)
-
-    # Ensure the user selects a maximum of 6 skills
-    if selected_skill_ids.count <= 6
-      @user.skill_ids = selected_skill_ids
-      redirect_to @user, notice: 'Skills updated successfully!'
-    else
-      flash.now[:alert] = 'You can only select a maximum of 6 skills.'
-      render :edit_skills
-    end
+    @user.update(user_params)
+    redirect_to user_path(@user)
   end
 
   private
@@ -41,6 +27,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :job_title, :about_me, :github_link, :photo)
+    params.require(:user).permit(:first_name, :last_name, :job_title, :about_me, :github_link, :photo, skill_ids: [])
   end
 end
