@@ -1,0 +1,23 @@
+.avatar-large {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+}
+
+.avatar-medium {
+  height: 65px;
+  width: 65px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+}
+
+.avatar-small {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 50%;
+}
