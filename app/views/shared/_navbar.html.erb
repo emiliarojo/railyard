@@ -19,7 +19,7 @@
       <% if current_user %>
         <div class="d-flex justify-content-around align-items-center w-25">
           <div class="new-project-icon">
-            <i class="fa-solid fa-plus"></i>
+            <%= link_to '<i class="fa-solid fa-plus"></i>'.html_safe, new_project_path %>
           </div>
           <div class="message-notifications-icon">
             <%= link_to chatrooms_path do %>

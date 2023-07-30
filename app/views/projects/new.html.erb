@@ -1,0 +1,18 @@
+<%= simple_form_for @project do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :amount_of_people %>
+  <%= f.input :repo_link %>
+  <label>Skills</label>
+  <div class="d-flex flex-wrap" data-controller="skills">
+    <%= f.collection_check_boxes :skill_ids, @skills, :id, :technology do |b| %>
+      <span class="ms-5 me-5 mt-3 mb-3 d-flex justify-content-center align-items-center container-skill"
+       data-target="skillName" data-action="click->skills#toggleHighlight">
+        <%= b.check_box + b.text %>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Create", class: "primary-pill-button-medium" %>
+  </div>
+<% end %>

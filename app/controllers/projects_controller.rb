@@ -19,6 +19,23 @@ class ProjectsController < ApplicationController
     authorize @project
   end
 
+  def new
+    @skills = Skill.all
+    @project = Project.new
+    authorize @project
+  end
+
+  def create
+    @project = Project.new(project_params)
+    @project.user = current_user
+    authorize @project
+    if @project.save
+      redirect_to project_path(@project)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
   def edit
     @skills = Skill.all
     authorize @project
@@ -27,27 +44,11 @@ class ProjectsController < ApplicationController
   def update
     authorize @project
     if @project.update(project_params)
-      respond_to do |format|
-        format.html { redirect_to @project }
-        format.json { render json: { success: true } }
-      end
+      redirect_to project_path(@project)
     else
-      respond_to do |format|
-        format.html { render :edit }
-        format.json { render json: { success: false, errors: @project.errors.full_messages } }
-      end
+      render :edit
     end
   end
-
-
-  # def update
-  #   authorize @project
-  #   if @project.update(project_params)
-  #     redirect_to project_path(@project)
-  #   else
-  #     render :edit
-  #   end
-  # end
 
   def destroy
     @project.destroy

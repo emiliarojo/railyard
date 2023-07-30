@@ -11,12 +11,7 @@ Rails.application.routes.draw do
   #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   # end
 
-  resources :projects do
-    member do
-      post 'add_skill'
-      post 'remove_skill'
-    end
-  end
+  resources :projects
   # get 'search', to: 'projects#index'
 
   resources :chatrooms, only: [:index, :show] do
