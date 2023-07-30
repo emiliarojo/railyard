@@ -3,8 +3,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
-    @projects = @user.projects.order(created_at: :desc)
-    @skills = @user.skills
+    @user = User.find(params[:id])
+    @user_projects = @user.projects.includes(:skills).order(created_at: :desc)
+    @user_skills = @user.skills
   end
 
   def edit
