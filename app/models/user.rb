@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :requests, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_one_attached :photo
 
   def self.from_omniauth(auth)
     find_or_create_by(provider: auth.provider, uid: auth.uid) do |user|
