@@ -10,9 +10,6 @@ application.register("chatroom-subscription", ChatroomSubscriptionController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import InPlaceEditController from "./in_place_edit_controller"
-application.register("in-place-edit", InPlaceEditController)
-
 import RequestsController from "./requests_controller"
 application.register("requests", RequestsController)
 
@@ -21,6 +18,3 @@ application.register("scroll-reveal", ScrollRevealController)
 
 import SkillsController from "./skills_controller"
 application.register("skills", SkillsController)
-
-import SkillsSelectionController from "./skills_selection_controller"
-application.register("skills-selection", SkillsSelectionController)
