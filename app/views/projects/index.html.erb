@@ -12,7 +12,7 @@
         </div>
         <div class="d-flex flex-column justify-content-center flex-grow-1 ms-3 me-3 p-2 pt-4 pb-4"> <%# card-info %>
           <div class="d-flex mb-2"> <%# info-header %>
-            <div class="d-flex align-items-center"><h1 class="m-0"><%= project.name %></h1></div>
+            <div class="d-flex align-items-center"><h1 class="m-0"><h1><%= link_to project.name, project_path(project) %></h1></div>
             <div class="d-flex justify-content-around align-items-center flex-grow-1"> <%# skills-section %>
               <span class="skill text-center">Skill</span>
               <span class="skill text-center">Skill</span>
