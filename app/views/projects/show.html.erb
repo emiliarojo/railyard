@@ -1,5 +1,5 @@
-<div class="container p-4">
-  <div class="pt-5 d-flex"> <%# project-header %>
+<div class="container p-4 pt-5 pb-5">
+  <div class="d-flex"> <%# project-header %>
     <div class="header-left-section d-flex flex-column justify-content-center border-bottom"> <%# header-left-section %>
       <p class="m-0 ps-5 pe-5 pb-4 pt-4"><span class="fw-bold">Projects</span> / <%= @project.name %></p>
       <h1 class="ps-5 pe-5"><%= @project.name %></h1>
@@ -15,7 +15,7 @@
       <div class="header-right-section">
         <div class="sign-up text-center">
           <h2>Ready to collaborate?</h2>
-          <%= link_to "Sign Up", new_user_registration_path, class: "button-signup" %>
+          <%= link_to "Sign up", new_user_registration_path, class: "button-signup" %>
           <div>
             <span>Already have an account? </span>
             <%= link_to "Login", new_user_session_path, class: "fw-bold" %>
