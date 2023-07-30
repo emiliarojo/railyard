@@ -16,7 +16,7 @@
             <span class="ms-2"><%= link_to "Joined", "#", class: "primary-button-medium reverse-primary-button"%></span>
           </div>
         <% elsif @sent_request && @sent_request.status == "pending" %>
-          <div><span class="pending-status">Pending</span></div>
+          <div><%= link_to "Pending", "#",class: "primary-button-large reverse-primary-button"%></div>
         <% elsif @sent_request.nil? %>
           <div><%= link_to "Join", "#", class: "primary-button-large"%></div>
         <% end %>
