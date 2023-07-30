@@ -6,59 +6,123 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# Seed file (db/seeds.rb)
+# seeds.rb
+
 require 'faker'
 
-# Clear existing data from the "users" table to avoid duplication
+Chatroom.delete_all
+Message.delete_all
+ProjectSkill.delete_all
+Request.delete_all
+UserSkill.delete_all
+Skill.delete_all
+Project.delete_all
 User.delete_all
 
-# Add the 15 most important skills for Rails developers
+# Helper method to create skills
+def create_skill(technology, level)
+  Skill.find_or_create_by(technology: technology, level: level)
+end
+
+# Helper method to create users and associate skills
+def create_user(email, password, first_name, last_name, job_description, about_me, provider, uid, skills)
+  user = User.find_or_create_by(email: email) do |u|
+    u.password = password
+    u.first_name = first_name
+    u.last_name = last_name
+    u.job_description = job_description
+    u.about_me = about_me
+    u.provider = provider
+    u.uid = uid
+  end
+
+  # Ensure the user has at most 6 skills
+  user_skills = skills.take(6)
+
+  user_skills.each do |skill|
+    user.skills << skill unless user.skills.include?(skill)
+  end
+end
+
+# Create skills
 skills_list = [
-  { technology: 'Ruby', level: 'Advanced' },
-  { technology: 'Ruby on Rails', level: 'Advanced' },
-  { technology: 'ActiveRecord', level: 'Intermediate' },
-  { technology: 'HTML/CSS', level: 'Intermediate' },
-  { technology: 'JavaScript', level: 'Intermediate' },
-  { technology: 'RSpec', level: 'Intermediate' },
-  { technology: 'Capybara', level: 'Intermediate' },
-  { technology: 'Git', level: 'Intermediate' },
-  { technology: 'Deployment', level: 'Intermediate' },
-  { technology: 'Authentication', level: 'Intermediate' },
-  { technology: 'Authorization', level: 'Intermediate' },
-  { technology: 'Security', level: 'Intermediate' },
-  { technology: 'REST API Design', level: 'Intermediate' },
-  { technology: 'Database Management', level: 'Intermediate' },
-  { technology: 'Background Processing', level: 'Intermediate' },
-  { technology: 'Performance Optimization', level: 'Intermediate' },
-  { technology: 'Error Handling', level: 'Intermediate' }
+  { technology: "ActiveRecord", level: "Intermediate" },
+  { technology: "Capybara", level: "Advanced" },
+  { technology: "Stimulus", level: "Beginner" },
+  { technology: "Frontend Development", level: "Intermediate" },
+  { technology: "RSpec", level: "Advanced" },
+  { technology: "GraphQL", level: "Beginner" },
+  { technology: "Action Cable", level: "Intermediate" },
+  { technology: "Heroku", level: "Intermediate" },
+  { technology: "PostgreSQL", level: "Advanced" },
+  { technology: "Bootstrap", level: "Beginner" },
+  { technology: "Devise", level: "Intermediate" },
+  { technology: "Webpacker", level: "Beginner" },
+  { technology: "HAML", level: "Advanced" },
+  { technology: "RSpec", level: "Intermediate" },
+  { technology: "jQuery", level: "Beginner" }
 ]
 
-skills_list.each do |skill_attrs|
-  Skill.find_or_create_by(skill_attrs)
+skills_list.each do |skill_info|
+  create_skill(skill_info[:technology], skill_info[:level])
 end
 
-# Create ten sample users
+# Create users
+users_list = []
+
 10.times do
-  first_name = Faker::Name.first_name
-  last_name = Faker::Name.last_name
-  email = Faker::Internet.email(name: "#{first_name} #{last_name}", domain: 'example.com')
-  password = Faker::Internet.password(min_length: 8)
-  job_description = 'Rails Developer'
-  about_me = Faker::Lorem.paragraph
-
-  user = User.create!(
-    email: email,
-    password: password,
-    first_name: first_name,
-    last_name: last_name,
-    job_description: job_description,
-    about_me: about_me
-  )
-
-  # Add skills to the user using sample skills from the skills_list
-  user_skills = Skill.all.sample(rand(1..6)) # Assuming each user will have 1 to 6 skills
-  user.skills << user_skills
+  users_list << {
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(min_length: 8),
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    job_description: Faker::Job.title,
+    about_me: Faker::Lorem.paragraph,
+    provider: "github",
+    uid: Faker::Number.unique.number(digits: 6).to_s, # Using unique number to avoid conflicts
+    skills: Skill.all.sample(6) # Randomly assign 6 skills to the user
+  }
 end
 
+users_list.each do |user_info|
+  create_user(user_info[:email], user_info[:password], user_info[:first_name], user_info[:last_name],
+              user_info[:job_description], user_info[:about_me], user_info[:provider], user_info[:uid], user_info[:skills])
+end
 
-puts "Seed data created successfully!"
+# Create projects
+def create_project(name, description, amount_of_people, repo_link, user, skills)
+  project = Project.find_or_create_by(name: name, description: description, amount_of_people: amount_of_people, repo_link: repo_link, user: user)
+
+  # Ensure the project has at most 6 skills
+  project_skills = skills.take(6)
+
+  project_skills.each do |skill|
+    project.skills << skill unless project.skills.include?(skill)
+  end
+
+  project
+end
+
+# ...
+
+projects_list = []
+
+30.times do
+  projects_list << {
+    name: Faker::App.name,
+    description: Faker::Lorem.paragraph,
+    amount_of_people: rand(1..10),
+    repo_link: Faker::Internet.url,
+    user: User.all.sample,
+    skills: Skill.all.sample(6) # Randomly assign 6 skills to each project
+  }
+end
+
+projects_list.each do |project_info|
+  create_project(project_info[:name], project_info[:description], project_info[:amount_of_people],
+                 project_info[:repo_link], project_info[:user], project_info[:skills])
+end
+
+# You can create requests, chatrooms, and messages here as needed.
+
+puts "Seeds data has been created."
