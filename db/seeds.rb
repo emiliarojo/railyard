@@ -50,7 +50,8 @@ skills_list = [
   { technology: "ActiveRecord", level: "Intermediate" },
   { technology: "Capybara", level: "Advanced" },
   { technology: "Stimulus", level: "Beginner" },
-  { technology: "Frontend Development", level: "Intermediate" },
+  { technology: "Frontend", level: "Intermediate" },
+  { technology: "Backend", level: "Intermediate" },
   { technology: "RSpec", level: "Advanced" },
   { technology: "GraphQL", level: "Beginner" },
   { technology: "Action Cable", level: "Intermediate" },
@@ -59,7 +60,7 @@ skills_list = [
   { technology: "Bootstrap", level: "Beginner" },
   { technology: "Devise", level: "Intermediate" },
   { technology: "Webpacker", level: "Beginner" },
-  { technology: "HAML", level: "Advanced" },
+  { technology: "HTML", level: "Advanced" },
   { technology: "RSpec", level: "Intermediate" },
   { technology: "jQuery", level: "Beginner" }
 ]
@@ -85,6 +86,19 @@ users_list = []
     github_link: "https://github.com/emiliarojo"
   }
 end
+
+# for testing purpose
+users_list << {
+  email: "test@test.com",
+  password: "secret",
+  first_name: "Test name",
+  last_name: "Test last name",
+  job_description: "test",
+  about_me: "test",
+  provider: "github",
+  uid: Faker::Number.unique.number(digits: 6).to_s, # Using unique number to avoid conflicts
+  skills: Skill.all.sample(6) # Randomly assign 6 skills to the user
+}
 
 users_list.each do |user_info|
   create_user(user_info[:email], user_info[:password], user_info[:first_name], user_info[:last_name],
