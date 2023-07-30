@@ -1,0 +1,22 @@
+<%= simple_form_for @project do |f| %>
+  <%= f.input :name,
+              hint: "leave it blank if you don't want to change it" %>
+  <%= f.input :description,
+              hint: "leave it blank if you don't want to change it" %>
+  <%= f.input :amount_of_people,
+              hint: "leave it blank if you don't want to change it" %>
+  <%= f.input :repo_link,
+              hint: "leave it blank if you don't want to change it" %>
+  <label>Skills</label>
+  <div class="d-flex flex-wrap" data-controller="skills">
+    <%= f.collection_check_boxes :skill_ids, @skills, :id, :technology do |b| %>
+      <span class="ms-5 me-5 mt-3 mb-3 d-flex justify-content-center align-items-center container-skill <%= "selected-skill" if @project.skill_ids.include?(b.value) %>"
+       data-target="skillName" data-action="click->skills#toggleHighlight">
+        <%= b.check_box + b.text %>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, "Update", class: "primary-button-medium" %>
+  </div>
+<% end %>
