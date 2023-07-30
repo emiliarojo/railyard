@@ -1,25 +1,6 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  def new
-    super do |resource|
-      6.times { resource.skills.build } # Build 6 empty skill records for the form
-    end
-  end
-
-  private
-
-  def sign_up_params
-    params.require(:user).permit(
-      :first_name,
-      :last_name,
-      :job_title,
-      :about_me,
-      :github_link,
-      :photo,
-      skills_attributes: [:id] # Permit the skills attributes
-    )
-  end
 
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
