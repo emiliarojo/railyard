@@ -1,23 +1,32 @@
-<nav class="navbar-user-profile">
-  <div class="navbar-container-left">
-    <%# <a href class= "navbar-title">
-      Railyard
-    </a> %>
-    <%= link_to "Railyard", root_path, class: "navbar-title" %>
+<% unless controller_name == "pages" && action_name == "home" %>
+  <nav class="navbar-user-profile">
+    <div class="navbar-container-left">
+      <%# <a href class= "navbar-title">
+        Railyard
+      </a> %>
+      <%= link_to "Railyard", root_path, class: "navbar-title" %>
 
-    <div class="search-bar">
-      <form autocomplete="off" class="d-flex" action="" method="get">
-        <input class="form-control" type="search" name="q" placeholder=" Search for Rails Projects" aria-label="Search">
-        <%# <button class="btn btn-outline-success" type="submit">Search</button> %>
-      </form>
+      <div class="search-bar">
+        <form autocomplete="off" class="d-flex" action="" method="get">
+          <input class="form-control" type="search" name="q" placeholder=" Search for Rails Projects" aria-label="Search">
+          <%# <button class="btn btn-outline-success" type="submit">Search</button> %>
+        </form>
+      </div>
     </div>
-  </div>
-  <div class="navbar-container-right">
-    <div class="new-project-icon">
-      <i class="fa-solid fa-plus"></i>
+    <div class="navbar-container-right">
+      <div class="new-project-icon">
+        <i class="fa-solid fa-plus"></i>
+      </div>
+      <div class="message-notifications-icon">
+        <i class="fa-solid fa-comments"></i>
+      </div>
     </div>
-    <div class="message-notifications-icon">
-      <i class="fa-solid fa-comments"></i>
-    </div>
-  </div>
-</nav>
+  </nav>
+<% else %>
+  <nav class="navbar-landing-page">
+    <%= button_to "Login", user_github_omniauth_authorize_path, data: { turbo: false }, class: "button-login" %>
+    <a href="" class="button-signup">
+      Sign up
+    </a>
+  </nav>
+<% end %>
