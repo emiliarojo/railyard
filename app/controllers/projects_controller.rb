@@ -7,11 +7,14 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.all
     end
+    authorize Project
+    @projects = policy_scope(Project)
   end
 
   def show
     @project = Project.find(params[:id])
     @hours = posted_hours_ago(@project.created_at)
+    authorize @project
   end
 
   private
