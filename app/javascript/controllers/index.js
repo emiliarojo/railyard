@@ -7,5 +7,11 @@ import { application } from "./application"
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import InPlaceEditController from "./in_place_edit_controller"
+application.register("in-place-edit", InPlaceEditController)
+
 import ScrollRevealController from "./scroll_reveal_controller"
 application.register("scroll-reveal", ScrollRevealController)
+
+import SkillsSelectionController from "./skills_selection_controller"
+application.register("skills-selection", SkillsSelectionController)

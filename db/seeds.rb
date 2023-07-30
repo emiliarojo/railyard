@@ -25,12 +25,12 @@ def create_skill(technology, level)
 end
 
 # Helper method to create users and associate skills
-def create_user(email, password, first_name, last_name, job_description, about_me, provider, uid, skills, github_link)
+def create_user(email, password, first_name, last_name, job_title, about_me, provider, uid, skills, github_link)
   user = User.find_or_create_by(email: email) do |u|
     u.password = password
     u.first_name = first_name
     u.last_name = last_name
-    u.job_description = job_description
+    u.job_title = job_title
     u.about_me = about_me
     u.provider = provider
     u.uid = uid
@@ -78,7 +78,7 @@ users_list = []
     password: Faker::Internet.password(min_length: 8),
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    job_description: Faker::Job.title,
+    job_title: Faker::Job.title,
     about_me: Faker::Lorem.paragraph,
     provider: "github",
     uid: Faker::Number.unique.number(digits: 6).to_s, # Using unique number to avoid conflicts
@@ -102,7 +102,7 @@ users_list << {
 
 users_list.each do |user_info|
   create_user(user_info[:email], user_info[:password], user_info[:first_name], user_info[:last_name],
-              user_info[:job_description], user_info[:about_me], user_info[:provider], user_info[:uid],
+              user_info[:job_title], user_info[:about_me], user_info[:provider], user_info[:uid],
               user_info[:skills], user_info[:github_link])
 end
 

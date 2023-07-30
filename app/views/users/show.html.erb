@@ -1,9 +1,11 @@
 <div class="container-user-basic-info">
   <h1 class="red-header">
-    <%= @user.first_name %> <%= @user.last_name %>
+    <%= @user.first_name %>
+    <%= @user.last_name %>
   </h1>
+  <%= link_to raw('<i class="fa-solid fa-pen-to-square"></i>'), edit_user_registration_path(@user) %>
   <h5 class="black-subheader-bold">
-      <%= @user.job_description %>
+    <%= @user.job_title %>
   </h5>
   <div class="user-profile-github">
     <%= link_to raw('<i class="fab fa-github"></i>'), @user.github_link, target: '_blank' %>
@@ -24,7 +26,7 @@
 
 <div class="container-user-profile-skills">
   <h5 class="black-subheader-bold">
-      Skills
+    Skills
   </h5>
   <div class="container-user-skills">
     <% @user_skills.each do |skill| %>
@@ -37,7 +39,7 @@
 
 <div class="container-user-profile-projects">
   <h5 class="black-subheader-bold">
-      Projects
+    Projects
   </h5>
   <div class="container-user-projects">
     <% @user_projects.each do |project| %>

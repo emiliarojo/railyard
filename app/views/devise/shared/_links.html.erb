@@ -1,6 +1,6 @@
-<%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
-<% end %>
+<%#- if controller_name != 'sessions' %>
+  <%#= link_to "Log in", new_session_path(resource_name) %><br />
+<%# end %>
 
 <%#- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <%#= link_to "Sign up", new_registration_path(resource_name) %><br />
@@ -20,6 +20,6 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to raw('<i class="fab fa-github"></i>') + "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "button-gh-auth" %><br />
+    <%= button_to raw('<i class="fab fa-github"></i>') + "Connect with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class: "button-gh-auth" %><br />
   <% end %>
 <% end %>
