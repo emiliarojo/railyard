@@ -4,10 +4,18 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                input_html: { autocomplete: "given-name" },
+                value: @user.first_name if @user %>
+    <%= f.input :last_name,
+                required: true,
+                input_html: { autocomplete: "family-name" },
+                value: @user.last_name if @user %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "email" }%>
+                input_html: { autocomplete: "email" } %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -15,6 +23,17 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :job_description,
+                required: true,
+                input_html: { autocomplete: "organization" } %>
+    <%= f.input :about_me,
+                required: true,
+                as: :text,
+                input_html: { autocomplete: "off" } %>
+    <%= f.input :github_link,
+                required: true,
+                input_html: { autocomplete: "url" },
+                value: @user.github_link if @user %>
   </div>
 
   <div class="form-actions">

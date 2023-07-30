@@ -17,6 +17,7 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20]
       user.first_name = auth.info.name.split.first
       user.last_name = auth.info.name.split[1..-1].join(" ")
+      user.github_link = auth.info.urls.GitHub
     end
   end
 
@@ -26,6 +27,7 @@ class User < ApplicationRecord
         user.email = data["email"] if user.email.blank?
         user.first_name = data["name"].split.first if user.first_name.blank?
         user.last_name = data["name"].split[1..-1].join(" ") if user.last_name.blank?
+        user.github_link = data["urls"]["GitHub"] if user.github_link.blank?
       end
     end
   end
