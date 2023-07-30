@@ -15,4 +15,8 @@ Rails.application.routes.draw do
     end
   end
   # get 'search', to: 'projects#index'
+
+  resources :chatrooms, only: [:index, :show] do
+    resources :messages, only: :create
+  end
 end

@@ -64,14 +64,17 @@ gem "devise"
 gem "omniauth-github", "~> 2.0.0"
 gem "omniauth-rails_csrf_protection"
 
-#Faker
+# Faker
 gem 'faker'
 
-#Cloudinary
+# Cloudinary
 gem "cloudinary"
 
-#Pundit
+# Pundit
 gem "pundit"
+
+# Pg Search
+gem "pg_search"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

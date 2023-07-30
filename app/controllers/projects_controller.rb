@@ -4,13 +4,13 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:q].present?
-      @projects = Project.where("title LIKE :query OR description LIKE :query", query: "%#{params[:q]}%")
+    authorize Project
+    @projects = policy_scope(Project)
+    if params[:query].present?
+      @projects = Project.search_by_name_and_description(params[:query])
     else
       @projects = Project.all
     end
-    authorize Project
-    @projects = policy_scope(Project)
   end
 
   def show
