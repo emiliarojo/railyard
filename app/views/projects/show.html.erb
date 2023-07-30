@@ -1,16 +1,14 @@
-<div class="container p-4 pt-5 pb-5">
+<div class="container p-5">
   <div class="d-flex"> <%# project-header %>
-    <div class="header-left-section d-flex flex-column justify-content-center border-bottom"> <%# header-left-section %>
+    <div class="header-left-section d-flex flex-column justify-content-around border-bottom"> <%# header-left-section %>
       <p class="m-0 ps-5 pe-5 pb-4 pt-4"><%= link_to '<i class="fa-solid fa-arrow-left-long"></i>'.html_safe, projects_path, class: "me-3" %> <span>Projects</span> / <span , class= "fw-bold"><%= @project.name %></span></p>
-      <h1 class="ps-5 pe-5"><%= @project.name %></h1>
+      <h1 class="ps-5 pe-5 m-0"><%= @project.name %></h1>
       <div class="ps-5 pe-5 pt-4 pb-4">
         <span class="me-3"><i class="fa-solid fa-user"></i> <%= @project.amount_of_people %></span> <span>Posted by <span class="underlined-bold-text"><%= @project.user.first_name %> <%= @project.user.last_name %></span> <%= @hours %> <%= "hour".pluralize(@hours) %> ago</span>
       </div>
     </div>
-    <% if current_user  %> <%# header-right-section %>
-      <div class="header-right-section border-bottom">
-      <%# something if logged in %>
-      </div>
+    <% if signed_in? %> <%# header-right-section %>
+      <div class="header-right-section border-bottom"></div>
     <% else %>
       <div class="header-right-section">
         <div class="sign-up text-center">
@@ -22,8 +20,7 @@
           </div>
         </div>
       </div>
-    </div>
-
+    <% end %>
   </div>
   <div class="border-bottom p-5"> <%# project-body %>
     <p class="m-0"><%= @project.description %></p>
@@ -31,12 +28,9 @@
   <div class="p-5"> <%# project-footer %>
     <p class="fw-bold mb-4">Skills</p>
     <div class="d-flex justify-content-around align-items-center flex-grow-1">
-      <span class="skill text-center">Skill</span>
-      <span class="skill text-center">Skill</span>
-      <span class="skill text-center">Skill</span>
-      <span class="skill text-center">Skill</span>
-      <span class="skill text-center">Skill</span>
-      <span class="skill text-center">Skill</span>
+      <% @project.project_skills.each do |project_skill| %>
+        <span class="skill text-center"><%= project_skill.skill.technology %></span>
+      <% end %>
     </div>
   </div>
 </div>
