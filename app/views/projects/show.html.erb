@@ -7,18 +7,18 @@
         <span class="me-3"><i class="fa-solid fa-user"></i> <%= @project.amount_of_people %></span>
         <span class="me-3">Posted by
           <% if (current_user && @project.user.first_name != current_user.first_name) || current_user.nil? %>
-            <span class="underlined-bold-text"><%= @project.user.first_name %> <%= @project.user.last_name %></span>
+            <a href="/users/<%= @project.user.id %>" class="underlined-bold-text"><%= @project.user.first_name %> <%= @project.user.last_name %></a>
           <% elsif current_user && @project.user.first_name == current_user.first_name %>
-            <span class="underlined-bold-text">You</span>
+            <a href="/users/<%= @project.user.id %>" class="underlined-bold-text">You</a>
           <% end %>
           <%= @hours %> <%= "hour".pluralize(@hours) %> ago
         </span>
-
-        <span>
-          <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_project_path(@project), class: "me-2" %>
-          <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, project_path(@project), data: { turbo_method: :delete } %>
-        </span>
-
+        <% if @project.user == current_user %>
+          <span>
+            <%= link_to '<i class="fa-solid fa-pen-to-square"></i>'.html_safe, edit_project_path(@project), class: "me-2" %>
+            <%= link_to '<i class="fa-solid fa-trash-can"></i>'.html_safe, project_path(@project), data: { turbo_method: :delete } %>
+          </span>
+        <% end %>
       </div>
     </div>
     <% if signed_in? %> <%# header-right-section %>
@@ -54,8 +54,8 @@
   <div class="p-5"> <%# project-footer %>
     <p class="fw-bold mb-4">Skills</p>
     <div class="d-flex justify-content-around align-items-center flex-grow-1">
-      <% @project.project_skills.each do |project_skill| %>
-        <span class="skill text-center"><%= project_skill.skill.technology %></span>
+      <% @project.skills.each do |skill| %>
+        <span class="container-skill text-center"><%= skill.technology %></span>
       <% end %>
     </div>
   </div>

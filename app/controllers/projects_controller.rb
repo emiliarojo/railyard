@@ -20,14 +20,34 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @skills = Skill.all
     authorize @project
   end
 
   def update
-    @project.update(project_params)
     authorize @project
-    redirect_to project_path(@project)
+    if @project.update(project_params)
+      respond_to do |format|
+        format.html { redirect_to @project }
+        format.json { render json: { success: true } }
+      end
+    else
+      respond_to do |format|
+        format.html { render :edit }
+        format.json { render json: { success: false, errors: @project.errors.full_messages } }
+      end
+    end
   end
+
+
+  # def update
+  #   authorize @project
+  #   if @project.update(project_params)
+  #     redirect_to project_path(@project)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @project.destroy
@@ -37,16 +57,17 @@ class ProjectsController < ApplicationController
 
   private
 
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
   def posted_hours_ago(created_at)
     time_difference = (Time.now - created_at).to_i
     (time_difference / 1.hour).to_i
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :amount_of_people, :repo_link)
+    params.require(:project).permit(:name, :description, :amount_of_people, :repo_link, skill_ids: [])
   end
 
-  def set_project
-    @project = Project.find(params[:id])
-  end
 end

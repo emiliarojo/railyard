@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import ScrollRevealController from "./scroll_reveal_controller"
 application.register("scroll-reveal", ScrollRevealController)
+
+import SkillsController from "./skills_controller"
+application.register("skills", SkillsController)
