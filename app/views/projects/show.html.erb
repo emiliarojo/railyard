@@ -1,4 +1,4 @@
-<div class="container p-5">
+<div class="container p-4 pt-5 pb-5">
   <div class="d-flex"> <%# project-header %>
     <div class="header-left-section d-flex flex-column justify-content-center border-bottom"> <%# header-left-section %>
       <p class="m-0 ps-5 pe-5 pb-4 pt-4"><%= link_to '<i class="fa-solid fa-arrow-left-long"></i>'.html_safe, projects_path, class: "me-3" %> <span>Projects</span> / <span , class= "fw-bold"><%= @project.name %></span></p>
@@ -7,13 +7,19 @@
         <span class="me-3"><i class="fa-solid fa-user"></i> <%= @project.amount_of_people %></span> <span>Posted by <span class="underlined-bold-text"><%= @project.user.first_name %> <%= @project.user.last_name %></span> <%= @hours %> <%= "hour".pluralize(@hours) %> ago</span>
       </div>
     </div>
-    <%= current_user ? '<div class="header-right-section border-bottom">'.html_safe : '<div class="header-right-section">'.html_safe %>
-      <div class="sign-up text-center">
-        <h2>Ready to collaborate?</h2>
-        <%= link_to "Sign up", new_user_registration_path, class: "button-signup" %>
-        <div>
-          <span>Already have an account? </span>
-          <%= link_to "Login", new_user_session_path, class: "fw-bold" %>
+    <% if current_user  %> <%# header-right-section %>
+      <div class="header-right-section border-bottom">
+      <%# something if logged in %>
+      </div>
+    <% else %>
+      <div class="header-right-section">
+        <div class="sign-up text-center">
+          <h2>Ready to collaborate?</h2>
+          <%= link_to "Sign up", new_user_registration_path, class: "button-signup" %>
+          <div>
+            <span>Already have an account? </span>
+            <%= link_to "Login", new_user_session_path, class: "fw-bold" %>
+          </div>
         </div>
       </div>
     </div>

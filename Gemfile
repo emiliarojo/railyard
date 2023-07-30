@@ -64,9 +64,6 @@ gem "devise"
 gem "omniauth-github", "~> 2.0.0"
 gem "omniauth-rails_csrf_protection"
 
-# Dotenv
-gem "dotenv-rails", groups: [:development, :test]
-
 #Faker
 gem 'faker'
 

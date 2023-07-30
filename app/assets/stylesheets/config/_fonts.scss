@@ -12,6 +12,13 @@ $body-font: 'Encode Sans', sans-serif;
   font-weight: 400;
 }
 
+.red-subheader {
+  font-family: $body-font;
+  color: #D20102;
+  font-size: 20pt;
+  font-weight: 400;
+}
+
 .black-subheader {
   font-family: $body-font;
   color: $black;
@@ -23,5 +30,12 @@ $body-font: 'Encode Sans', sans-serif;
   font-family: $body-font;
   color: $black;
   font-size: 16pt;
+  font-weight: 500;
+}
+
+.black-text-bold {
+  font-family: $body-font;
+  color: $black;
+  font-size: 10pt;
   font-weight: 500;
 }

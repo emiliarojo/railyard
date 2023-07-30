@@ -1,27 +1,3 @@
-<nav class="navbar-user-profile">
-  <div class="navbar-container-left">
-    <%# <a href class= "navbar-title">
-      Railyard
-    </a> %>
-    <%= link_to "Railyard", root_path, class: "navbar-title" %>
-
-    <div class="search-bar">
-      <form autocomplete="off" class="d-flex" action="" method="get">
-        <input class="form-control" type="search" name="q" placeholder=" Search for Rails Projects" aria-label="Search">
-        <%# <button class="btn btn-outline-success" type="submit">Search</button> %>
-      </form>
-    </div>
-  </div>
-  <div class="navbar-container-right">
-    <div class="new-project-icon">
-      <i class="fa-solid fa-plus"></i>
-    </div>
-    <div class="message-notifications-icon">
-      <i class="fa-solid fa-comments"></i>
-    </div>
-  </div>
-</nav>
-
 <div class="container-user-basic-info">
   <h1 class="red-header">
     <%= @user.first_name %> <%= @user.last_name %>
@@ -30,9 +6,7 @@
       <%= @user.job_description %>
   </h5>
   <div class="user-profile-github">
-    <a href="https:www.github.com" target="_blank">
-      <i class="fa-brands fa-github"></i>
-    </a>
+    <%= link_to raw('<i class="fab fa-github"></i>'), "https://github.com/#{@user.uid}", target: '_blank' %>
   </div>
 </div>
 
@@ -65,16 +39,26 @@
   <h5 class="black-subheader-bold">
       Projects
   </h5>
-
   <div class="container-user-projects">
     <% @user_projects.each do |project| %>
-      <div class="card-project">
-        <h4><%= project.name %></h3>
-        <ul>
+      <div class="card-user-project">
+        <div class="card-user-project-title">
+          <h4 class="red-subheader">
+            <%= project.name %>
+          </h4>
+          <p class="black-text-bold">
+            <%= project.user.first_name %>
+            <%= project.user.last_name %>
+          </p>
+        </div>
+        <div class="card-user-project-skills">
           <% project.skills.each do |skill| %>
-            <li><%= skill.technology %></li>
+            <div class="container-skill-sm">
+              <%= skill.technology %>
+            </div>
           <% end %>
-        </ul>
+        </div>
+        <%= link_to "See more", project_path(project), class: "button-signup" %>
       </div>
     <% end %>
   </div>
