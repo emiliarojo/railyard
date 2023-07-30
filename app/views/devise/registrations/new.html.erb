@@ -1,44 +1,58 @@
-<h2>Sign up</h2>
+<div class="container-signup">
+  <div class="card-signup">
+    <h1 class="red-subheader">Sign up</h1>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :first_name,
-                required: true,
-                input_html: { autocomplete: "given-name" },
-                value: @user.first_name if @user %>
-    <%= f.input :last_name,
-                required: true,
-                input_html: { autocomplete: "family-name" },
-                value: @user.last_name if @user %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :job_description,
-                required: true,
-                input_html: { autocomplete: "organization" } %>
-    <%= f.input :about_me,
-                required: true,
-                as: :text,
-                input_html: { autocomplete: "off" } %>
-    <%= f.input :github_link,
-                required: true,
-                input_html: { autocomplete: "url" },
-                value: @user.github_link if @user %>
+      <div class="form-inputs-signup">
+        <%= f.input :first_name,
+                    required: true,
+                    input_html: { autocomplete: "given-name" },
+                    value: @user.first_name if @user %>
+        <%= f.input :last_name,
+                    required: true,
+                    input_html: { autocomplete: "family-name" },
+                    value: @user.last_name if @user %>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :job_title,
+                    required: true,
+                    input_html: { autocomplete: "organization" } %>
+        <%= f.input :about_me,
+                    required: true,
+                    as: :text,
+                    input_html: { autocomplete: "off" } %>
+        <%= f.input :github_link,
+                    required: true,
+                    input_html: { autocomplete: "url" },
+                    value: @user.github_link if @user %>
+        <%= f.label :skills, "Skills (max 6)" %>
+        <br>
+      <div class="form-group">
+        <%= f.label :skills, "Select your skills (maximum of 6)" %>
+        <% Skill.all.each do |skill| %>
+          <label class="skill-button <%= 'selected' if resource.skills.include?(skill) %>">
+            <%= f.check_box :skill_ids, { multiple: true }, skill.id, nil %>
+            <%= skill.technology %>
+          </label><br>
+        <% end %>
+      </div>
+      </div>
+
+      <div class="form-actions-signup">
+        <%= f.button :submit, "Sign up", class: "button-red-flat" %>
+    <% end %>
+        <%= render "devise/shared/links" %>
+      </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

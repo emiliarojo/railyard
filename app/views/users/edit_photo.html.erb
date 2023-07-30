@@ -1,0 +1,14 @@
+<h1>Edit Your Profile Photo</h1>
+
+<%= form_with(model: @user, url: update_photo_user_path(@user), method: :patch, local: true, multipart: true) do |form| %>
+  <div class="field">
+    <%= form.label :photo %>
+    <%= form.file_field :photo, as: :file, label: false, required: false %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Update Photo" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to Profile", user_path(@user) %>
