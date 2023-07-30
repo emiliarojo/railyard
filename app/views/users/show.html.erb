@@ -6,7 +6,7 @@
       <%= @user.job_description %>
   </h5>
   <div class="user-profile-github">
-    <%= link_to raw('<i class="fab fa-github"></i>'), "https://github.com/#{@user.uid}", target: '_blank' %>
+    <%= link_to raw('<i class="fab fa-github"></i>'), @user.github_link, target: '_blank' %>
   </div>
 </div>
 

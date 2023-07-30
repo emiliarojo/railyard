@@ -50,3 +50,42 @@
     color: $red-hover;
   }
 }
+
+.button-red-flat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $red;
+  color: white;
+  font-family: $body-font;
+  font-size: 12pt;
+  font-weight: 500;
+  padding: 5px 50px;
+  margin: 16px;
+  border-radius: 8px;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    background-color: $red-hover;
+    color: white;
+  }
+}
+
+.button-gh-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  padding: 10px 75px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: $soft-white;
+  .fa-github {
+    font-size: 20pt;
+    margin-right: 15px;
+  }
+  &:hover {
+    background-color: #f0f0f0;
+  }
+}
